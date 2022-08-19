@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>テキストエリアの行数を数える</title>
+    <script type="text/javascript">
+
+        function chk() {
+            tval = document.getElementById("rtxt").value;//入力された文字列
+            num = tval.match(/\r\n/g); //IE 用
+            num = tval.match(/\n/g);   //Firefox 用
+
+            if (tval == "") {
+                alert("何も入力されていません。"); return
+            }
+            if (num != null) {
+                gyosuu = num.length + 1;
+                tval = tval.split(/\r\n|\r|\n/);
+                num = Math.floor(Math.random() * gyosuu); + 1;
+            }
+            else {
+                gyosuu = 1;
+            }
+            alert(tval[num]);
+        }
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <textarea rows="3" cols="50" id="rtxt" onblur="chk()" style="height: 630px; width: 770px;">
+ </textarea>
+    </form>
+</body>
+
+</html>
